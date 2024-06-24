@@ -1,11 +1,9 @@
+import ThemedText from "@/components/ThemedText";
 import { Colors } from "@/constants/Colors";
 import { useThemedStyles } from "@/hooks/useThemedStyles";
 import { TouchableOpacity, Text, ColorSchemeName, StyleSheet } from "react-native";
 
 const getStyles = (colorScheme: ColorSchemeName) => StyleSheet.create({
-    text: {
-        color: colorScheme === "dark" ? Colors.dark.text : Colors.light.text,
-    },
     button: {
         backgroundColor: colorScheme === "dark" ? Colors.dark.button : Colors.light.button,
         padding: 10,
@@ -27,7 +25,7 @@ export default function ChatButton({ onPress, label }: Props) {
 
     return (
         <TouchableOpacity onPress={onPress} style={styles.button}>
-            <Text style={styles.text}>{label}</Text>
+            <ThemedText>{label}</ThemedText>
         </TouchableOpacity>
     );
 }

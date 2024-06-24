@@ -1,6 +1,7 @@
+import ThemedText from "@/components/ThemedText";
 import { useThemedStyles } from "@/hooks/useThemedStyles";
 import { useEffect, useState } from "react";
-import { View, Text, ColorSchemeName, StyleSheet, useColorScheme } from "react-native";
+import { ColorSchemeName, StyleSheet, View, useColorScheme } from "react-native";
 
 const darkBackgroundColors = [
     "#1A1A1A", /* Dark Charcoal */
@@ -35,12 +36,9 @@ const getStyles = (colorScheme: ColorSchemeName) => StyleSheet.create({
         backgroundColor: colorScheme === "dark" ? "#333" : "#f0f0f0",
         padding: 20,
         margin: 10,
-        borderRadius: 50,
+        borderRadius: 20,
         maxWidth: "80%",
         position: "relative",
-    },
-    messageText: {
-        color: colorScheme === "dark" ? "#fff" : "#000",
     },
     authorName: {
         color: colorScheme === "dark" ? "#bbb" : "#555",
@@ -68,15 +66,14 @@ export default function MessageBubble({ message, userName }: Props) {
             const lightColor = lightBackgroundColors[Math.floor(Math.random() * lightBackgroundColors.length)];
             userColors.set(userName, { dark: darkColor, light: lightColor });
         }
-        console.log(colorScheme)
         const userColor = userColors.get(userName)[colorScheme];
         setUserColor(userColor);
     }, [userName, colorScheme]);
 
     return (
         <View style={[styles.container, { backgroundColor: userColor }]}>
-            <Text style={styles.messageText}>{message}</Text>
-            <Text style={styles.authorName}>{userName}</Text>
+            <ThemedText>{message}</ThemedText>
+            <ThemedText style={styles.authorName}>{userName}</ThemedText>
         </View>
     );
 }
