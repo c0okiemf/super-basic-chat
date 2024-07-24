@@ -1,12 +1,11 @@
+import ChatButton from "@/components/ChatButton";
+import PageWrapper from "@/components/PageWrapper";
 import { Colors } from "@/constants/Colors";
 import { useThemedStyles } from "@/hooks/useThemedStyles";
 import { useAuth } from "@/providers/AuthContextProvider";
-import { useNavigation } from "expo-router";
-import { useState } from "react";
-import { ColorSchemeName, View, StyleSheet, TextInput, TouchableOpacity, Text, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { router } from 'expo-router';
-import PageWrapper from "@/components/PageWrapper";
-import ChatButton from "@/components/ChatButton";
+import { useState } from "react";
+import { ColorSchemeName, Keyboard, StyleSheet, TextInput, TouchableWithoutFeedback, View } from "react-native";
 
 const getStyles = (colorScheme: ColorSchemeName) => StyleSheet.create({
     text: {
@@ -33,7 +32,7 @@ export default function Login() {
 
     const { setUsername: setAuthUserName } = useAuth();
 
-    const onLogin = async () => {
+    const onLogin = () => {
         setAuthUserName(username);
         router.navigate("/chat");
     };

@@ -4,8 +4,8 @@ import PageWrapper from "@/components/PageWrapper";
 import { Colors } from "@/constants/Colors";
 import { useMessages } from "@/hooks/useMessages";
 import { useThemedStyles } from "@/hooks/useThemedStyles";
-import { createRef, useState } from "react";
-import { ColorSchemeName, FlatList, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { ColorSchemeName, FlatList, KeyboardAvoidingView, Platform, StyleSheet, TextInput, View } from "react-native";
 
 const getStyles = (colorScheme: ColorSchemeName) => StyleSheet.create({
   text: {
@@ -40,7 +40,7 @@ export default function Chat() {
 
   const { messages, sendMessage } = useMessages();
 
-  const onSendMessage = async () => {
+  const onSendMessage = () => {
     sendMessage(currentMessage);
     setCurrentMessage("")
   };
